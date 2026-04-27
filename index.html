@@ -3,163 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPI-TABI 2026 | 出雲大社</title>
+    <title>SPI-TABI 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&family=Yomogi&family=Zen+Maru+Gothic:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        :root { --font-hand: 'Yomogi', cursive; --font-friendly: 'Kiwi Maru', serif; --font-round: 'Zen Maru Gothic', sans-serif; }
-        body { font-family: var(--font-friendly); background-color: #fffdfa; color: #334155; scroll-behavior: smooth; }
+        @import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&family=Yomogi&family=Zen+Maru+Gothic:wght@400;500&display=swap');
+        :root {
+            --font-hand: 'Yomogi', cursive;
+            --font-friendly: 'Kiwi Maru', serif;
+            --font-round: 'Zen Maru Gothic', sans-serif;
+        }
+        body { font-family: var(--font-friendly); background-color: #fffdfa; color: #334155; }
         .font-hand { font-family: var(--font-hand); }
+        .font-friendly { font-family: var(--font-friendly); }
         .font-round { font-family: var(--font-round); }
-        .animate-fade-in-up { animation: fadeInUp 1.2s ease forwards; opacity: 0; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up { animation: fade-in-up 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; }
         .delay-100 { animation-delay: 0.3s; }
         .delay-200 { animation-delay: 0.6s; }
         .delay-300 { animation-delay: 0.9s; }
         .talk-content { max-height: 0; overflow: hidden; transition: all 0.5s ease-in-out; opacity: 0; }
-        .talk-content.open { max-height: 500px; opacity: 1; padding-bottom: 24px; }
-        .rotate-180 { transform: rotate(180deg); }
+        .talk-content.open { max-height: 500px; opacity: 1; }
     </style>
 </head>
-<body>
+<body class="selection:bg-blue-100">
 
-    <nav class="fixed top-0 w-full z-50 py-6 bg-white/80 backdrop-blur-md shadow-sm">
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 bg-transparent py-6">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="text-xl font-bold tracking-widest text-blue-500">SPI-TABI 2026</div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium font-round">
-                <a href="#schedule" class="hover:text-blue-400">SCHEDULE</a>
-                <a href="#talk" class="hover:text-blue-400">TALK</a>
-                <a href="#items" class="hover:text-blue-400">ITEMS</a>
+            <div class="text-xl font-bold tracking-widest text-blue-500 font-friendly">SPI-TABI 2026</div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide font-round text-slate-700">
+                <a href="#about" class="hover:text-blue-400 transition-colors">ABOUT</a>
+                <a href="#schedule" class="hover:text-blue-400 transition-colors">SCHEDULE</a>
+                <a href="#talk" class="hover:text-blue-400 transition-colors">TALK</a>
+                <a href="#items" class="hover:text-blue-400 transition-colors">ITEMS</a>
             </div>
         </div>
     </nav>
 
     <section class="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden">
-        <div class="text-center px-6 max-w-4xl w-full">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-blue-50/30 via-white/10 to-[#fffdfa] z-10"></div>
+            <div class="w-full h-full bg-blue-50 opacity-30"></div>
+        </div>
+        <div class="relative z-20 text-center px-6 max-w-4xl w-full">
             <p class="text-blue-500 font-hand text-xl mb-4 animate-fade-in-up">思い付きでついてきてくれてありがとう</p>
-            <h1 class="text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight animate-fade-in-up delay-100 text-slate-800 font-friendly">
-                スピ旅2026<br>
-                <span class="text-blue-500 relative inline-block">出雲大社<span class="absolute bottom-0 left-0 w-full h-2 bg-blue-100 -z-10"></span></span> で良縁結べ
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-friendly mb-6 leading-tight animate-fade-in-up delay-100 text-slate-800">
+                スピ旅2026<br />
+                <span class="text-blue-500 inline-block relative">出雲大社
+                    <svg class="absolute -bottom-2 left-0 w-full h-3 text-blue-200 opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 25 0, 50 5 T 100 5" fill="none" stroke="currentColor" stroke-width="4" /></svg>
+                </span> で良縁結べ
             </h1>
             <p class="text-slate-400 font-hand text-lg tracking-[0.2em] mb-12 animate-fade-in-up delay-200">～隣に座っていてくれたらそれでいいよ旅～</p>
 
             <div class="relative mx-auto max-w-2xl animate-fade-in-up delay-300">
-                <div class="bg-white p-4 rounded-lg shadow-xl transform rotate-1 transition-transform hover:rotate-0 duration-500">
-                    <div class="aspect-[16/9] overflow-hidden rounded-md bg-slate-100">
-                        <img src="https://images.unsplash.com/photo-1590559899772-e23d3d63e038?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover">
+                <div class="absolute -inset-4 bg-white rounded-xl shadow-xl transform -rotate-1"></div>
+                <div class="relative bg-white p-4 rounded-lg shadow-sm transform rotate-1 transition-transform hover:rotate-0 duration-500">
+                    <div class="aspect-[16/9] overflow-hidden rounded-md bg-slate-100 flex items-center justify-center group">
+                        <img src="https://images.unsplash.com/photo-1590559899772-e23d3d63e038?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     </div>
                     <div class="mt-4 flex justify-between items-center px-2">
                         <span class="font-hand text-slate-400 text-sm">2026.04.27 Izumo Tabi</span>
-                        <span class="text-pink-300 text-xl">❤️✨</span>
+                        <div class="flex gap-1">
+                            <i data-lucide="heart" class="w-4 h-4 text-pink-200 fill-pink-200"></i>
+                            <i data-lucide="sparkles" class="w-4 h-4 text-blue-200"></i>
+                        </div>
                     </div>
+                </div>
+            </div>
+            <div class="mt-20 animate-bounce opacity-40"><i data-lucide="chevron-down" class="w-6 h-6 mx-auto text-blue-300"></i></div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="group relative">
+                    <div class="overflow-hidden rounded-[2rem] shadow-sm aspect-[4/5] bg-white p-3"><img src="https://images.unsplash.com/photo-1621501174728-56ca6218d487?auto=format&fit=crop&q=80&w=800" class="object-cover w-full h-full rounded-[1.5rem]"></div>
+                    <div class="mt-4 text-center"><p class="text-[10px] tracking-widest text-blue-400 font-round mb-1 uppercase">SPOT 01</p><h3 class="text-lg font-friendly text-slate-700">出雲大社</h3></div>
+                </div>
+                <div class="group relative md:mt-12">
+                    <div class="overflow-hidden rounded-[2rem] shadow-sm aspect-[4/5] bg-white p-3"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=800" class="object-cover w-full h-full rounded-[1.5rem]"></div>
+                    <div class="mt-4 text-center"><p class="text-[10px] tracking-widest text-blue-400 font-round mb-1 uppercase">COFFEE</p><h3 class="text-lg font-friendly text-slate-700">限定マグカップ</h3></div>
+                </div>
+                <div class="group relative">
+                    <div class="overflow-hidden rounded-[2rem] shadow-sm aspect-[4/5] bg-white p-3"><img src="https://images.unsplash.com/photo-1544084944-15269ec7b5a0?auto=format&fit=crop&q=80&w=800" class="object-cover w-full h-full rounded-[1.5rem]"></div>
+                    <div class="mt-4 text-center"><p class="text-[10px] tracking-widest text-blue-400 font-round mb-1 uppercase">SPIRITUAL</p><h3 class="text-lg font-friendly text-slate-700">素鵞社の御砂</h3></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="schedule" class="py-24 bg-[#f8f9fa] rounded-[3rem] mx-4 md:mx-10 shadow-inner">
+    <section id="schedule" class="py-24 bg-[#f8f9fa] rounded-[3rem] mx-4 md:mx-10 shadow-inner font-round">
         <div class="container mx-auto px-6 max-w-2xl">
-            <h2 class="text-3xl text-center mb-16 text-slate-800 font-friendly">Journey Schedule</h2>
-            <div class="space-y-2 relative border-l-2 border-dashed border-blue-200 ml-4">
-                <div class="pl-8 pb-12 relative"><div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-2 border-blue-400"></div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm hover:translate-x-2 transition-transform">
-                        <span class="text-blue-500 font-bold font-round">06:00</span> <h4 class="text-xl inline ml-3 font-friendly">中津出発</h4>
-                        <p class="text-slate-500 text-sm mt-2 font-round">朝ごはんは車内でゆっくりと。</p>
-                    </div>
+            <h2 class="text-3xl font-friendly text-center mb-16 text-slate-800 tracking-tight">Journey Schedule</h2>
+            <div class="space-y-2 relative">
+                <div class="absolute left-8 top-0 bottom-0 w-[2px] bg-blue-100 border-dashed border-l-2"></div>
+                
+                <div class="relative pl-20 pb-12 group"><div class="absolute left-[25px] top-1 w-4 h-4 rounded-full bg-white border-2 border-blue-400 z-10 shadow-sm"></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-50"><div class="flex items-center gap-3 mb-1"><span class="text-blue-500 font-bold text-lg">06:00</span><h4 class="text-xl font-friendly">中津出発</h4></div><p class="text-slate-500 text-sm">朝ごはんは車内でゆっくりと。</p></div>
                 </div>
-                <div class="pl-8 pb-12 relative"><div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-2 border-blue-400"></div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm hover:translate-x-2 transition-transform">
-                        <span class="text-blue-500 font-bold font-round">08:00</span> <h4 class="text-xl inline ml-3 font-friendly">サービスエリア</h4>
-                        <p class="text-slate-500 text-sm mt-2 font-round">2時間おきに小休憩。</p>
-                    </div>
+                <div class="relative pl-20 pb-12 group"><div class="absolute left-[25px] top-1 w-4 h-4 rounded-full bg-white border-2 border-blue-400 z-10 shadow-sm"></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-50"><div class="flex items-center gap-3 mb-1"><span class="text-blue-500 font-bold text-lg">08:00</span><h4 class="text-xl font-friendly">サービスエリア</h4></div><p class="text-slate-500 text-sm">2時間おきに小休憩。</p></div>
                 </div>
-                <div class="pl-8 pb-12 relative"><div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-2 border-blue-400"></div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm hover:translate-x-2 transition-transform">
-                        <span class="text-blue-500 font-bold font-round">12:00</span> <h4 class="text-xl inline ml-3 font-friendly">出雲到着</h4>
-                        <p class="text-slate-500 text-sm mt-2 font-round">名物の蕎麦で腹ごしらえ。</p>
-                    </div>
+                <div class="relative pl-20 pb-12 group"><div class="absolute left-[25px] top-1 w-4 h-4 rounded-full bg-white border-2 border-blue-400 z-10 shadow-sm"></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-50"><div class="flex items-center gap-3 mb-1"><span class="text-blue-500 font-bold text-lg">12:00</span><h4 class="text-xl font-friendly">出雲到着</h4></div><p class="text-slate-500 text-sm">名物の蕎麦で腹ごしらえ。</p></div>
                 </div>
-                <div class="pl-8 pb-12 relative"><div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-2 border-blue-400"></div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm hover:translate-x-2 transition-transform">
-                        <span class="text-blue-500 font-bold font-round">13:00</span> <h4 class="text-xl inline ml-3 font-friendly">出雲大社 参拝</h4>
-                        <p class="text-slate-500 text-sm mt-2 font-round">良縁のご挨拶をしましょう。</p>
-                    </div>
+                <div class="relative pl-20 pb-12 group"><div class="absolute left-[25px] top-1 w-4 h-4 rounded-full bg-white border-2 border-blue-400 z-10 shadow-sm"></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-50"><div class="flex items-center gap-3 mb-1"><span class="text-blue-500 font-bold text-lg">13:00</span><h4 class="text-xl font-friendly">出雲大社 参拝</h4></div><p class="text-slate-500 text-sm">良縁のご挨拶をしましょう。</p></div>
                 </div>
-                <div class="pl-8 pb-12 relative"><div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-2 border-blue-400"></div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm hover:translate-x-2 transition-transform">
-                        <span class="text-blue-500 font-bold font-round">15:00</span> <h4 class="text-xl inline ml-3 font-friendly">スターバックス</h4>
-                        <p class="text-slate-500 text-sm mt-2 font-round">出雲限定マグカップをチェック。</p>
-                    </div>
+                <div class="relative pl-20 pb-12 group"><div class="absolute left-[25px] top-1 w-4 h-4 rounded-full bg-white border-2 border-blue-400 z-10 shadow-sm"></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-50"><div class="flex items-center gap-3 mb-1"><span class="text-blue-500 font-bold text-lg">15:00</span><h4 class="text-xl font-friendly">スターバックス</h4></div><p class="text-slate-500 text-sm">出雲限定マグカップをチェック。</p></div>
                 </div>
-                <div class="pl-8 relative"><div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-2 border-blue-400"></div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm hover:translate-x-2 transition-transform">
-                        <span class="text-blue-500 font-bold font-round">21:00</span> <h4 class="text-xl inline ml-3 font-friendly">中津帰宅</h4>
-                        <p class="text-slate-500 text-sm mt-2 font-round">お疲れさまです！</p>
-                    </div>
+                <div class="relative pl-20 pb-0 group"><div class="absolute left-[25px] top-1 w-4 h-4 rounded-full bg-white border-2 border-blue-400 z-10 shadow-sm"></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-50"><div class="flex items-center gap-3 mb-1"><span class="text-blue-500 font-bold text-lg">21:00</span><h4 class="text-xl font-friendly">中津帰宅</h4></div><p class="text-slate-500 text-sm">お疲れさまです！</p></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="talk" class="py-32">
-        <div class="container mx-auto px-6 max-w-3xl">
-            <div class="text-center mb-12">
-                <div class="inline-block px-4 py-1 bg-blue-50 text-blue-500 rounded-full text-xs font-bold tracking-widest mb-4 font-round">CAR TALK</div>
-                <h2 class="text-4xl font-friendly text-slate-800">車の中での時間</h2>
-            </div>
-            
-            <div class="space-y-4">
-                <div class="bg-white border border-slate-100 rounded-[2rem] overflow-hidden shadow-sm hover:border-blue-100 transition-all">
-                    <button onclick="toggleTalk(this)" class="w-full p-6 text-left flex justify-between items-center group">
-                        <span class="text-xl font-friendly group-hover:text-blue-400 transition-colors">最近はまったものある？</span>
-                        <span class="text-blue-500 transition-transform duration-300">▼</span>
-                    </button>
-                    <div class="talk-content px-8">
-                        <ul class="space-y-3 text-slate-600 font-round text-lg">
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-300 rounded-full"></span>中島健人について</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-300 rounded-full"></span>最近面白かったアニメとかドラマ</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-300 rounded-full"></span>はまっている食べ物、お菓子</li>
-                        </ul>
-                    </div>
+    <section id="talk" class="py-32 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-start gap-12 lg:gap-20">
+                <div class="md:w-5/12 sticky top-32">
+                    <div class="inline-block px-4 py-1 bg-blue-50 text-blue-500 rounded-full text-xs font-bold tracking-widest mb-4 font-round">CAR TALK</div>
+                    <h2 class="text-4xl font-friendly mb-8 text-slate-800 leading-tight">車の中での時間</h2>
+                    <p class="text-slate-500 mb-8 leading-loose font-round text-lg">移動時間も大切な旅の一部。<br />窓の外を流れる景色を眺めながら、<br />心にあるものを、言葉にしてみる。</p>
+                    <div class="flex items-center gap-4 py-4 px-6 bg-white rounded-2xl shadow-sm border border-blue-50 text-blue-500 font-hand text-xl"><i data-lucide="message-circle"></i><span>中津から出雲へのトークテーマ</span></div>
                 </div>
-
-                <div class="bg-white border border-slate-100 rounded-[2rem] overflow-hidden shadow-sm hover:border-blue-100 transition-all">
-                    <button onclick="toggleTalk(this)" class="w-full p-6 text-left flex justify-between items-center group">
-                        <span class="text-xl font-friendly group-hover:text-blue-400 transition-colors">今、一番欲しいもの / 最近買ってよかったもの</span>
-                        <span class="text-blue-500 transition-transform duration-300">▼</span>
-                    </button>
-                    <div class="talk-content px-8">
-                        <ul class="space-y-3 text-slate-600 font-round text-lg">
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-300 rounded-full"></span>これまで行った旅行でもう一度行きたいところ、場所</li>
-                        </ul>
+                <div class="md:w-7/12 w-full space-y-4">
+                    <div class="overflow-hidden rounded-[2rem] border bg-white/50 border-slate-100">
+                        <button onclick="toggleTalk(0)" class="w-full p-6 text-left flex justify-between items-center group">
+                            <span class="text-xl font-friendly text-slate-700">最近はまったものある？</span>
+                            <div class="talk-arrow w-10 h-10 rounded-full flex items-center justify-center bg-slate-50 text-slate-400 transition-all"><i data-lucide="chevron-down"></i></div>
+                        </button>
+                        <div id="talk-0" class="talk-content"><div class="p-8 pt-0 border-t border-blue-50/50 mt-2"><ul class="space-y-4 text-slate-600 font-round text-lg"><li>・中島健人について</li><li>・最近面白かったアニメとかドラマ</li><li>・はまっている食べ物、お菓子</li></ul></div></div>
                     </div>
-                </div>
-
-                <div class="bg-white border border-blue-100 rounded-[2rem] overflow-hidden shadow-lg">
-                    <button onclick="toggleTalk(this)" class="w-full p-6 text-left flex justify-between items-center group">
-                        <span class="text-xl font-friendly text-blue-500">ときめきがほしいよ2026</span>
-                        <span class="text-blue-500 transition-transform duration-300 rotate-180">▼</span>
-                    </button>
-                    <div class="talk-content px-8 open">
-                        <ul class="space-y-3 text-slate-600 font-round text-lg">
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-300 rounded-full"></span>理想の条件ってある？</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-300 rounded-full"></span>直近でいいことあった？</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-300 rounded-full"></span>ときめく仕草とかある？</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-300 rounded-full"></span>見た目好みじゃないけど、お金持ちはどう？</li>
-                        </ul>
+                    <div class="overflow-hidden rounded-[2rem] border bg-white/50 border-slate-100">
+                        <button onclick="toggleTalk(1)" class="w-full p-6 text-left flex justify-between items-center group">
+                            <span class="text-xl font-friendly text-slate-700">今、一番欲しいもの / 最近買ってよかったもの</span>
+                            <div class="talk-arrow w-10 h-10 rounded-full flex items-center justify-center bg-slate-50 text-slate-400 transition-all"><i data-lucide="chevron-down"></i></div>
+                        </button>
+                        <div id="talk-1" class="talk-content"><div class="p-8 pt-0 border-t border-blue-50/50 mt-2"><ul class="space-y-4 text-slate-600 font-round text-lg"><li>・これまで行った旅行でもう一度行きたいところ、場所</li></ul></div></div>
                     </div>
-                </div>
-
-                <div class="bg-white border border-slate-100 rounded-[2rem] overflow-hidden shadow-sm hover:border-blue-100 transition-all">
-                    <button onclick="toggleTalk(this)" class="w-full p-6 text-left flex justify-between items-center group">
-                        <span class="text-xl font-friendly group-hover:text-blue-400 transition-colors">30代になったら</span>
-                        <span class="text-blue-500 transition-transform duration-300">▼</span>
-                    </button>
-                    <div class="talk-content px-8">
-                        <ul class="space-y-3 text-slate-600 font-round text-lg">
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-300 rounded-full"></span>何かご褒美買っちゃう？</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-300 rounded-full"></span>10年前の自分に教えたいことある？</li>
-                        </ul>
+                    <div class="overflow-hidden rounded-[2rem] border bg-white/50 border-slate-100">
+                        <button onclick="toggleTalk(2)" class="w-full p-6 text-left flex justify-between items-center group">
+                            <span class="text-xl font-friendly text-slate-700">ときめきがほしいよ2026</span>
+                            <div class="talk-arrow w-10 h-10 rounded-full flex items-center justify-center bg-slate-50 text-slate-400 transition-all"><i data-lucide="chevron-down"></i></div>
+                        </button>
+                        <div id="talk-2" class="talk-content"><div class="p-8 pt-0 border-t border-blue-50/50 mt-2"><ul class="space-y-4 text-slate-600 font-round text-lg"><li>・理想の条件ってある？</li><li>・直近でいいことあった？</li><li>・ときめく仕草とかある？</li><li>・見た目好みじゃないけど、お金持ちはどう？</li></ul></div></div>
+                    </div>
+                    <div class="overflow-hidden rounded-[2rem] border bg-white/50 border-slate-100">
+                        <button onclick="toggleTalk(3)" class="w-full p-6 text-left flex justify-between items-center group">
+                            <span class="text-xl font-friendly text-slate-700">30代になったら</span>
+                            <div class="talk-arrow w-10 h-10 rounded-full flex items-center justify-center bg-slate-50 text-slate-400 transition-all"><i data-lucide="chevron-down"></i></div>
+                        </button>
+                        <div id="talk-3" class="talk-content"><div class="p-8 pt-0 border-t border-blue-50/50 mt-2"><ul class="space-y-4 text-slate-600 font-round text-lg"><li>・何かご褒美買っちゃう？</li><li>・10年前の自分に教えたいことある？</li></ul></div></div>
+                    </div>
+                    
+                    <div class="p-8 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-[2.5rem] shadow-xl mt-8 text-center transform -rotate-1 cursor-default">
+                        <p class="font-hand text-2xl tracking-widest mb-1">ときめきがほしいよ 2026</p>
+                        <p class="text-[10px] opacity-70 font-round tracking-widest uppercase">Special Topic for This Trip</p>
                     </div>
                 </div>
             </div>
@@ -168,56 +174,68 @@
 
     <section id="items" class="py-24 bg-white">
         <div class="container mx-auto px-6 max-w-5xl">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div class="bg-blue-50/30 p-10 rounded-[4rem] border-2 border-dashed border-blue-100">
-                    <h2 class="text-2xl font-friendly mb-6 text-center text-slate-800">Checklist</h2>
-                    <div class="grid grid-cols-2 gap-4 text-center">
-                        <div class="bg-blue-50/80 p-4 rounded-2xl shadow-sm border border-white">
-                            <h4 class="font-friendly">御砂の器</h4><p class="text-[10px] text-slate-400">素鵞社の御砂用</p>
-                        </div>
-                        <div class="bg-pink-50/80 p-4 rounded-2xl shadow-sm border border-white">
-                            <h4 class="font-friendly">気持ち</h4><p class="text-[10px] text-slate-400">一番大事なもの</p>
-                        </div>
-                        <div class="bg-orange-50/80 p-4 rounded-2xl shadow-sm border border-white">
-                            <h4 class="font-friendly">正装</h4><p class="text-[10px] text-slate-400">神様への敬意</p>
-                        </div>
-                        <div class="bg-green-50/80 p-4 rounded-2xl shadow-sm border border-white">
-                            <h4 class="font-friendly">スニーカー</h4><p class="text-[10px] text-slate-400">歩きやすさ重視</p>
-                        </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div class="bg-blue-50/30 p-10 rounded-[4rem] border-2 border-dashed border-blue-100 text-center font-round">
+                    <h2 class="text-2xl font-friendly mb-2 text-slate-800">Checklist</h2>
+                    <p class="text-slate-500 font-hand text-lg mb-10">忘れ物はないかな？準備も楽しんでね。</p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="bg-blue-50/80 p-6 rounded-[2rem] shadow-sm border border-white/50"><h4 class="text-lg font-friendly text-slate-800">御砂の器</h4><p class="text-[10px] text-slate-500 uppercase">素鵞社の御砂用</p></div>
+                        <div class="bg-pink-50/80 p-6 rounded-[2rem] shadow-sm border border-white/50"><h4 class="text-lg font-friendly text-slate-800">気持ち</h4><p class="text-[10px] text-slate-500 uppercase">一番大事なもの</p></div>
+                        <div class="bg-orange-50/80 p-6 rounded-[2rem] shadow-sm border border-white/50"><h4 class="text-lg font-friendly text-slate-800">正装</h4><p class="text-[10px] text-slate-500 uppercase">神様への敬意</p></div>
+                        <div class="bg-green-50/80 p-6 rounded-[2rem] shadow-sm border border-white/50"><h4 class="text-lg font-friendly text-slate-800">スニーカー</h4><p class="text-[10px] text-slate-500 uppercase">歩きやすさ重視</p></div>
                     </div>
                 </div>
-
-                <div class="bg-orange-50/30 p-10 rounded-[4rem] border-2 border-dashed border-orange-100">
-                    <h2 class="text-2xl font-friendly mb-6 text-center text-slate-800">Purchase List</h2>
+                <div class="bg-orange-50/30 p-10 rounded-[4rem] border-2 border-dashed border-orange-100 text-center font-round">
+                    <h2 class="text-2xl font-friendly mb-2 text-slate-800">Purchase List</h2>
+                    <p class="text-slate-500 font-hand text-lg mb-10">自分へのお土産、何にする？</p>
                     <div class="space-y-4">
-                        <div class="bg-white/80 p-4 rounded-xl flex items-center gap-4 shadow-sm">
-                            <span class="text-2xl">🌸</span><div><h4 class="font-friendly">縁結守</h4><p class="text-xs text-slate-400">定番お守り</p></div>
-                        </div>
-                        <div class="bg-white/80 p-4 rounded-xl flex items-center gap-4 shadow-sm">
-                            <span class="text-2xl">🧵</span><div><h4 class="font-friendly">縁結の糸</h4><p class="text-xs text-slate-400">衣服に縫い込む</p></div>
-                        </div>
-                        <div class="bg-white/80 p-4 rounded-xl flex items-center gap-4 shadow-sm">
-                            <span class="text-2xl">✨</span><div><h4 class="font-friendly">御砂</h4><p class="text-xs text-slate-400">素鵞社のパワー</p></div>
-                        </div>
+                        <div class="bg-white/80 p-5 rounded-2xl flex items-center gap-5 border border-orange-50 text-left"><div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-xl">🌸</div><div><h4 class="font-friendly text-lg text-slate-800">縁結守</h4><p class="text-sm text-slate-400 leading-tight">一番人気の定番お守り</p></div><i data-lucide="shopping-bag" class="ml-auto text-orange-200"></i></div>
+                        <div class="bg-white/80 p-5 rounded-2xl flex items-center gap-5 border border-orange-50 text-left"><div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-xl">🧵</div><div><h4 class="font-friendly text-lg text-slate-800">縁結の糸</h4><p class="text-sm text-slate-400 leading-tight">衣服に縫い込む良縁の糸</p></div><i data-lucide="shopping-bag" class="ml-auto text-orange-200"></i></div>
+                        <div class="bg-white/80 p-5 rounded-2xl flex items-center gap-5 border border-orange-50 text-left"><div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-xl">✨</div><div><h4 class="font-friendly text-lg text-slate-800">御砂</h4><p class="text-sm text-slate-400 leading-tight">素鵞社のパワーをいただく</p></div><i data-lucide="shopping-bag" class="ml-auto text-orange-200"></i></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-24 text-center">
+    <footer class="py-24 text-center font-round">
         <div class="text-blue-300 font-friendly text-sm tracking-[0.4em] uppercase mb-6">Since 2026 Izumo Tabi</div>
+        <div class="w-12 h-[1px] bg-blue-100 mx-auto mb-8"></div>
         <p class="text-slate-400 font-hand text-2xl italic mb-2">隣に座っていてくれたらそれでいいよ旅</p>
-        <p class="text-slate-300 font-round text-[10px] uppercase tracking-widest opacity-60">Executive Committee for Spiritual Journey</p>
+        <p class="text-slate-300 text-[10px] uppercase tracking-widest opacity-60">Executive Committee for Spiritual Journey</p>
     </footer>
 
     <script>
-        function toggleTalk(btn) {
-            const content = btn.nextElementSibling;
-            const arrow = btn.querySelector('span:last-child');
+        lucide.createIcons();
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.remove('bg-transparent', 'py-6');
+                nav.classList.add('bg-white/80', 'backdrop-blur-md', 'py-3', 'shadow-sm');
+            } else {
+                nav.classList.add('bg-transparent', 'py-6');
+                nav.classList.remove('bg-white/80', 'backdrop-blur-md', 'py-3', 'shadow-sm');
+            }
+        });
+
+        function toggleTalk(idx) {
+            const content = document.getElementById(`talk-${idx}`);
+            const parent = content.parentElement;
+            const arrow = parent.querySelector('.talk-arrow');
+            
             const isOpen = content.classList.contains('open');
-            content.classList.toggle('open');
-            arrow.classList.toggle('rotate-180');
+            
+            // Close others
+            document.querySelectorAll('.talk-content').forEach(c => c.classList.remove('open'));
+            document.querySelectorAll('.talk-arrow').forEach(a => a.classList.remove('bg-blue-500', 'text-white', 'rotate-180'));
+            document.querySelectorAll('.overflow-hidden.rounded-\\[2rem\\]').forEach(p => p.classList.remove('bg-white', 'border-blue-100', 'shadow-lg'));
+
+            if (!isOpen) {
+                content.classList.add('open');
+                arrow.classList.add('bg-blue-500', 'text-white', 'rotate-180');
+                parent.classList.add('bg-white', 'border-blue-100', 'shadow-lg');
+            }
         }
     </script>
 </body>
